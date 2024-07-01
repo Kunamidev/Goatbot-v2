@@ -69,7 +69,7 @@ async function getAIResponse(input, userId, messageID) {
 
 module.exports = {
     config: {
-        name: 'ai2',
+        name: 'ai',
         author: 'coffee',
         role: 0,
         category: 'ai',
@@ -90,7 +90,7 @@ module.exports = {
         const messageContent = event.body.trim().toLowerCase();
 
         // Check if the message is a reply to the bot's message or starts with "ai"
-        if ((event.messageReply && event.messageReply.senderID === api.getCurrentUserID()) || (messageContent.startsWith("ai2") && event.senderID !== api.getCurrentUserID())) {
+        if ((event.messageReply && event.messageReply.senderID === api.getCurrentUserID()) || (messageContent.startsWith("ai") && event.senderID !== api.getCurrentUserID())) {
             const input = messageContent.replace(/^ai\s*/, "").trim();
             try {
                 const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
